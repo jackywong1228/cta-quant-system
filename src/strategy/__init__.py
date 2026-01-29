@@ -3,5 +3,6 @@
 """
 
 from .factors import MomentumFactors
+from .signal_gen import SignalGenerator, Signal
 
-__all__ = ["MomentumFactors"]
+__all__ = ["MomentumFactors", "SignalGenerator", "Signal"]
