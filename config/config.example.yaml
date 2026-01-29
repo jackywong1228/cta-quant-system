@@ -1,0 +1,70 @@
+# CTA 量化系统配置示例
+# 复制此文件为 config.yaml 并填入你的配置
+
+# === 数据源配置 ===
+data:
+  tushare:
+    token: "YOUR_TUSHARE_TOKEN_HERE"  # 从 https://tushare.pro 获取
+    
+# === 数据库配置 ===
+database:
+  type: "sqlite"  # sqlite / clickhouse
+  sqlite:
+    path: "data/cta.db"
+  clickhouse:
+    host: "localhost"
+    port: 9000
+    database: "futures"
+
+# === 交易品种 ===
+trading:
+  # 主力合约列表
+  instruments:
+    # 黑色系
+    - "RB"   # 螺纹钢
+    - "HC"   # 热卷
+    - "I"    # 铁矿石
+    - "J"    # 焦炭
+    - "JM"   # 焦煤
+    # 有色金属
+    - "CU"   # 铜
+    - "AL"   # 铝
+    - "ZN"   # 锌
+    - "NI"   # 镍
+    # 能源化工
+    - "SC"   # 原油
+    - "FU"   # 燃油
+    - "BU"   # 沥青
+    - "MA"   # 甲醇
+    - "TA"   # PTA
+    # 农产品
+    - "M"    # 豆粕
+    - "Y"    # 豆油
+    - "P"    # 棕榈油
+    - "SR"   # 白糖
+    - "CF"   # 棉花
+    # 贵金属
+    - "AU"   # 黄金
+    - "AG"   # 白银
+
+# === 风控参数 ===
+risk:
+  max_position_pct: 0.1       # 单品种最大仓位占比
+  max_drawdown: 0.15          # 最大回撤阈值
+  daily_loss_limit: 0.03      # 单日亏损限制
+  leverage_limit: 3.0         # 杠杆上限
+
+# === 回测配置 ===
+backtest:
+  start_date: "2020-01-01"
+  end_date: "2025-12-31"
+  initial_capital: 1000000    # 初始资金 100万
+  commission_rate: 0.0001     # 手续费率
+  slippage: 1                 # 滑点（跳）
+
+# === 日志配置 ===
+logging:
+  level: "INFO"
+  file: "logs/cta.log"
+  rotation: "10 MB"
+  retention: "30 days"
