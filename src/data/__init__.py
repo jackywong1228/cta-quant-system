@@ -3,5 +3,6 @@
 """
 
 from .tushare_client import TushareClient
+from .data_processor import DataProcessor, process_symbol
 
-__all__ = ["TushareClient"]
+__all__ = ["TushareClient", "DataProcessor", "process_symbol"]
